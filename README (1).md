@@ -155,9 +155,12 @@ Follow these instructions to spin up the workspace environment using GitHub Code
 1. Log into your GitHub Profile.
 2. Create a new public or private repository named `Docker-Automated-Security-Hardening`.
 3. Click on the **Code** dropdown button, navigate to the **Codespaces** tab, and select **Create codespace on main**.
+<img width="954" height="298" alt="image" src="https://github.com/user-attachments/assets/5dc27cd1-7c9d-414b-8ee5-1ac5df70a1a0" />
+<img width="957" height="397" alt="image" src="https://github.com/user-attachments/assets/e745eb69-93fb-497c-ab88-b3636e55dcbf" />
 
 ### Step 2: Establish the Code Tree Structure
 When your workspace terminal opens, verify your tools and configure the working directory framework:
+<img width="934" height="379" alt="image" src="https://github.com/user-attachments/assets/e33ae2f5-239d-467a-95cc-ae7f6841ea39" />
 
 ```bash
 # Check underlying operational components
@@ -169,9 +172,11 @@ mkdir app
 mkdir scan-results
 mkdir screenshots
 ```
+<img width="1017" height="131" alt="Screenshot 2026-09-07 193808" src="https://github.com/user-attachments/assets/c33579bb-e576-4512-98d3-eb483a96f13f" />
 
 ### Step 3: Populate Workspace Configuration Files
 Create the primary components using your console text tool or by piping data into target manifests:
+<img width="1087" height="501" alt="Screenshot 2026-09-07 194019" src="https://github.com/user-attachments/assets/72febaf3-443a-416d-b3c8-309142c2949b" />
 
 #### `app/server.js`
 ```javascript
@@ -189,6 +194,8 @@ server.listen(port, () => {
 ```
 
 #### `app/package.json`
+<img width="959" height="299" alt="Screenshot 2026-09-07 194206" src="https://github.com/user-attachments/assets/61e4dfc2-ae40-4bc9-941b-e66951cbf1c6" />
+
 ```json
 {
   "name": "docker-secure-app",
@@ -201,6 +208,8 @@ server.listen(port, () => {
 ```
 
 #### `Dockerfile`
+<img width="1006" height="565" alt="Screenshot 2026-09-07 194401" src="https://github.com/user-attachments/assets/8cabb30e-c9dc-4596-bea6-ac9165134ab5" />
+
 ```dockerfile
 FROM node:20-alpine AS builder
 WORKDIR /app
@@ -217,6 +226,8 @@ CMD ["server.js"]
 ```
 
 #### `pipeline.sh`
+<img width="1917" height="778" alt="Screenshot 2026-09-07 224413" src="https://github.com/user-attachments/assets/f8537684-7680-4428-9a62-8a710fd037c4" />
+
 ```bash
 #!/bin/bash
 set -e
@@ -233,6 +244,8 @@ docker run -d -p 3000:3000 secure-app
 ```
 
 Make your script engine file operational:
+<img width="1362" height="54" alt="Screenshot 2026-09-07 224527" src="https://github.com/user-attachments/assets/33b23d06-0762-4878-9190-37988314d218" />
+
 ```bash
 chmod +x pipeline.sh
 ```
@@ -243,6 +256,8 @@ chmod +x pipeline.sh
 
 ### 🟢 1. Successful SecOps Pipeline Execution
 Run the system setup using your manual step overrides or by kicking off your orchestration loops. The pipeline validates configuration components, ensures zero issues exist, and boots the microservice cleanly.
+<img width="1059" height="709" alt="Screenshot 2026-09-07 221651" src="https://github.com/user-attachments/assets/46c90348-fa23-4f87-89c2-a3ff221d6246" />
+<img width="940" height="88" alt="Screenshot 2026-09-07 222122" src="https://github.com/user-attachments/assets/bc571c94-22b9-4f2b-82d4-296b61bf6a6c" />
 
 ```bash
 docker build -t secure-app .
@@ -251,6 +266,8 @@ docker run -d -p 3000:3000 secure-app
 
 #### Verifying Active Infrastructure Endpoints
 Test responses locally inside your codespace console:
+<img width="918" height="85" alt="Screenshot 2026-09-07 222309" src="https://github.com/user-attachments/assets/290a5a8c-70f4-4019-a94b-a9d1c05eb467" />
+
 ```bash
 curl localhost:3000
 ```
@@ -265,17 +282,23 @@ When Trivy Threat Intelligence flags a vulnerability, the automated security gat
 For example, when auditing an image version that contains an unpatched vulnerability—such as **CVE-2026-31789** inside `libssl3`—the vulnerability scanner exits with a non-zero failure flag (`exit-code 1`). This halts the automated deployment script before insecure code can reach production.
 
 Execute a targeted vulnerability scan to view this constraint in action:
+<img width="1381" height="621" alt="Screenshot 2026-09-07 224111" src="https://github.com/user-attachments/assets/dbbef044-4b05-4b34-b060-ed687bb2fa5e" />
+
 ```bash
 docker run --rm   -v /var/run/docker.sock:/var/run/docker.sock   aquasec/trivy:latest image   --severity CRITICAL   --format table   secure-app
 ```
 
 #### Exporting Security Audit Analytics
 To store these logs for historical reference, pipe your data payload into a text report artifact:
+<img width="1845" height="761" alt="Screenshot 2026-09-07 231535" src="https://github.com/user-attachments/assets/96bc6be6-e382-4583-8449-d2c3380f9f61" />
+
 ```bash
 docker run --rm   -v /var/run/docker.sock:/var/run/docker.sock   aquasec/trivy:latest image   --severity CRITICAL   secure-app > scan-results/trivy-report.txt
 ```
 #### Committing Assets to Version Control
 Save your workspace progress and commit the generated report to your repository:
+<img width="1849" height="779" alt="Screenshot 2026-09-07 232042" src="https://github.com/user-attachments/assets/ea7b4b7b-9d00-4162-b91b-d3e09e3b5616" />
+
 ```bash
 git add .
 git commit -m "Add Trivy security report"
@@ -287,6 +310,8 @@ git push origin main
 
 ## 🧼 System Cleanup Operations
 To completely turn off active containers, wipe out dangling volumes, and reset your workspace cache, run the following cleanup command:
+<img width="697" height="123" alt="image" src="https://github.com/user-attachments/assets/df0f1c81-154f-402c-b1fa-2c76affb50d6" />
+
 ```bash
 docker rm -f $(docker ps -aq) 2>/dev/null || true
 echo "Subscribed workspace structures dropped cleanly."
